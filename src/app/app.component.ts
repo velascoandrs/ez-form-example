@@ -135,8 +135,18 @@ export class AppComponent {
           }
         ],
       },
-    }
+    },
+    {
+      controlName: 'profilePicture',
+      label: 'Profile Picture',
+      hint: 'Please upload your profile picture',
+      placeholder: 'Add your profile picture',
+      type: {
+        typeName: 'file'
+      }
+    },
   ];
+
 
 
   userData = {
