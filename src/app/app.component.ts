@@ -42,7 +42,7 @@ export class AppComponent {
       placeholder: 'Enter a complete address',
       type: {
         typeName: 'textarea',
-        maxLength: 30,
+        maxLength: 25,
       },
       validators: [
         Validators.required,
@@ -175,6 +175,7 @@ export class AppComponent {
 
   someFunction(event) {
     // Your logic ..
+    this.userData = event? event : undefined; 
     console.log(event);
   }
 
