@@ -142,9 +142,22 @@ export class AppComponent {
       hint: 'Please upload your profile picture',
       placeholder: 'Add your profile picture',
       type: {
-        typeName: 'file'
-      }
+        typeName: 'file',
+        multiple: false,
+        accept: 'image/*',
+      },
     },
+    {
+      controlName: 'someFiles',
+      label: 'Add Some Files',
+      hint: 'Please upload your files',
+      placeholder: 'Add Files',
+      type: {
+        typeName: 'file',
+        multiple: true,
+        accept: '*/*',
+      },
+    }
   ];
 
 
@@ -175,7 +188,7 @@ export class AppComponent {
 
   someFunction(event) {
     // Your logic ..
-    this.userData = event? event : undefined; 
+    this.userData = event? event : undefined;
     console.log(event);
   }
 

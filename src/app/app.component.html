@@ -1,10 +1,13 @@
-<ez-form
-  [formConfig]="myConfiguration"
-  [inputData]="userData"
-  (dataFromForm)="someFunction($event)"
-  [styleFramework]="'material'"
-  [msgErrorAnimation]="'fadeInLeft'"
-  [toasterConfig]="myToasterConfig"
->
-  <button [disabled]="!userData" class="btn btn-block btn-info">Submit</button>
-</ez-form>
+
+<div class="container">
+    <ez-form
+      [formConfig]="myConfiguration"
+      [inputData]="userData"
+      (dataFromForm)="someFunction($event)"
+      [styleFramework]="'material'"
+      [msgErrorAnimation]="'fadeInLeft'"
+      [toasterConfig]="myToasterConfig"
+    >
+      <button [disabled]="!userData" class="btn btn-block btn-info">Submit</button>
+    </ez-form>
+</div>
