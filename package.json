@@ -21,7 +21,7 @@
     "@angular/platform-browser": "~8.2.4",
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
-    "@gordon_freeman/ez-form": "^1.6.7",
+    "@gordon_freeman/ez-form": "^1.7.9",
     "angular2-toaster": "^8.0.0",
     "bootstrap": "^4.3.1",
     "hammerjs": "^2.0.8",

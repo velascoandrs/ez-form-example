@@ -156,6 +156,7 @@ export class AppComponent {
         typeName: 'file',
         multiple: true,
         accept: '*/*',
+        showFile: true
       },
     }
   ];
