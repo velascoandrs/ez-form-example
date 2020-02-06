@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Validators} from '@angular/forms';
+import {PlosService} from './plos.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'ez-form-example';
+  title = 'formularios';
   myConfiguration = [
     {
       controlName: 'uuid',
@@ -42,7 +43,7 @@ export class AppComponent {
       placeholder: 'Enter a complete address',
       type: {
         typeName: 'textarea',
-        maxLength: 25,
+        maxLength: 20,
       },
       validators: [
         Validators.required,
@@ -91,7 +92,7 @@ export class AppComponent {
       controlName: 'cities',
       type: {
         typeName: 'check',
-        minRequired : 2,
+        minRequired: 2,
         options: [
           {
             value: 1,
@@ -156,24 +157,41 @@ export class AppComponent {
         typeName: 'file',
         multiple: true,
         accept: '*/*',
-        showFile: true
+        showFile: true,
       },
-    }
+    },
+    {
+      controlName: 'wikipedia',
+      validators: [
+        Validators.required
+      ],
+      label: 'Wikipedia article',
+      placeholder: 'Example: DNA',
+      type: {
+        typeName: 'autocomplete',
+        completeMethod: this.filterCityWithHttpService,
+        nameAutoComplete: 'title',
+        componentReference: this
+      },
+      errorMessages: {
+        required: 'The article is mandatory',
+      },
+      hint: 'Search a wikipedia article by title'
+    },
   ];
-
-
-
-  userData = {
+  usuario = {
     uuid: 1234,
     email: 'juan.pecados@mail.com',
     civilState: 1,
     otherDate: '2015-02-16',
     birthday: '1999-02-16',
     favoriteFruit: 1,
-    cities: [1, 3],
     password: '12133',
-    address: '1233 street abc, New York'
+    address: 'Av. 1231',
+    cities: [1, 2],
+    wikipedia: {id: 2894, title: 'Parbasdorf', country: 'AT', lat: '48.28333', lng: '16.6'},
   };
+
   myToasterConfig = {
     success: {
       type: 'info',
@@ -187,11 +205,19 @@ export class AppComponent {
     }
   };
 
-  someFunction(event) {
-    // Your logic ..
-    this.userData = event? event : undefined;
-    console.log(event);
+  escucharDatosDelFormulario(evento) {
+    this.usuario = evento ? evento : undefined;
+    if (this.usuario) {
+      console.log('todo OK: ', this.usuario);
+    } else {
+      console.log('todo mal');
+    }
   }
-
-
+  constructor(
+    private readonly _cityService: PlosService
+  ) {
+  }
+  filterCityWithHttpService(event, contexto) {
+    return contexto._cityService.find(event.query ? event.query : event);
+  }
 }

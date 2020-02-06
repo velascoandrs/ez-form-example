@@ -1,13 +1,14 @@
-
 <div class="container">
-    <ez-form
-      [formConfig]="myConfiguration"
-      [inputData]="userData"
-      (dataFromForm)="someFunction($event)"
-      [styleFramework]="'material'"
-      [msgErrorAnimation]="'fadeInLeft'"
-      [toasterConfig]="myToasterConfig"
-    >
-      <button [disabled]="!userData" class="btn btn-block btn-info">Submit</button>
-    </ez-form>
+  <ez-form
+    [formConfig]="myConfiguration"
+    [inputData]="usuario"
+    (dataFromForm)="escucharDatosDelFormulario($event)"
+    [styleFramework]="'material'"
+    [msgErrorAnimation]="'fadeInLeft'"
+    [toasterConfig]="myToasterConfig"
+    [showToaster]="true"
+  >
+    <button [disabled]="!usuario" class="btn btn-block btn-info">Submit</button>
+  </ez-form>
+  <p>I'm making use of PLOS API</p>
 </div>
