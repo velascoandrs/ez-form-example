@@ -161,7 +161,7 @@ export class AppComponent {
       },
     },
     {
-      controlName: 'wikipedia',
+      controlName: 'article',
       validators: [
         Validators.required
       ],
@@ -169,14 +169,15 @@ export class AppComponent {
       placeholder: 'Example: DNA',
       type: {
         typeName: 'autocomplete',
-        completeMethod: this.filterCityWithHttpService,
+        maxLength: 30,
+        completeMethod: this.filterWikipediaArticleByTitle,
         nameAutoComplete: 'title',
         componentReference: this
       },
       errorMessages: {
         required: 'The article is mandatory',
       },
-      hint: 'Search a wikipedia article by title'
+      hint: 'Search an article'
     },
   ];
   usuario = {
@@ -189,7 +190,7 @@ export class AppComponent {
     password: '12133',
     address: 'Av. 1231',
     cities: [1, 2],
-    wikipedia: {id: 2894, title: 'Parbasdorf', country: 'AT', lat: '48.28333', lng: '16.6'},
+    article: {id: 2894, title: 'Parbasdorf', country: 'AT', lat: '48.28333', lng: '16.6'},
   };
 
   myToasterConfig = {
@@ -214,10 +215,10 @@ export class AppComponent {
     }
   }
   constructor(
-    private readonly _cityService: PlosService
+    private readonly _wikipediaService: PlosService
   ) {
   }
-  filterCityWithHttpService(event, contexto) {
-    return contexto._cityService.find(event.query ? event.query : event);
+  filterWikipediaArticleByTitle(event, contexto) {
+    return contexto._wikipediaService.findArticle(event.query ? event.query : event);
   }
 }

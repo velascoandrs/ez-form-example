@@ -1,14 +1,30 @@
 <div class="container">
-  <ez-form
-    [formConfig]="myConfiguration"
-    [inputData]="usuario"
-    (dataFromForm)="escucharDatosDelFormulario($event)"
-    [styleFramework]="'material'"
-    [msgErrorAnimation]="'fadeInLeft'"
-    [toasterConfig]="myToasterConfig"
-    [showToaster]="true"
-  >
-    <button [disabled]="!usuario" class="btn btn-block btn-info">Submit</button>
-  </ez-form>
-  <p>I'm making use of wikipedia api</p>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Material</h2>
+      <ez-form
+        [formConfig]="myConfiguration"
+        [styleFramework]="'material'"
+        [msgErrorAnimation]="'fadeInLeft'"
+        [toasterConfig]="myToasterConfig"
+        [showToaster]="true"
+      >
+        <p>I'm making use of wikipedia api</p>
+        <button mat-raised-button color="primary" class="btn btn-block">Submit</button>
+      </ez-form>
+    </div>
+    <div class="col-md-6">
+      <h2>Bootstrap</h2>
+      <ez-form
+        [formConfig]="myConfiguration"
+        [styleFramework]="'bootstrap'"
+        [msgErrorAnimation]="'fadeInLeft'"
+        [showToaster]="true"
+        [inputData]='myToasterConfig'
+        (dataFromForm)="escucharDatosDelFormulario($event)"
+      >
+        <button class="btn btn-block btn-info">Submit</button>
+      </ez-form>
+    </div>
+  </div>
 </div>

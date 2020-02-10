@@ -10,11 +10,9 @@ export class PlosService {
 
   constructor(private _httpClient: HttpClient) {
   }
-
-  find(query: string): Observable<any> {
+  findArticle(query: string): Observable<any> {
     const url = `${this.url}&srsearch=${query}`;
     return this._httpClient.get(url).pipe(
-      startWith([]),
       mergeMap(
         (respuesta: any) => {
           if (respuesta.query) {
