@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Validators} from '@angular/forms';
 import {PlosService} from './plos.service';
+import {FileValidator} from '@gordon_freeman/ez-form';
 
 @Component({
   selector: 'app-root',
@@ -153,6 +154,16 @@ export class AppComponent {
       label: 'Add Some Files',
       hint: 'Please upload your files',
       placeholder: 'Add Files',
+      validators: [
+        Validators.required,
+        FileValidator.extensions(['png', 'jpg']),
+        FileValidator.maxSize(500),
+      ],
+      errorMessages: {
+        fileExtension: 'Please select png or jpg files only',
+        required: 'Mandatory File',
+        fileMaxSize: 'File size is larger than 500 kilobytes'
+      },
       type: {
         typeName: 'file',
         multiple: true,
